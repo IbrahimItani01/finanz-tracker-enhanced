@@ -198,7 +198,8 @@ em{
     }
     .top-section{
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding-inline: 50px;
         align-items: center;
         width: 100%;
 

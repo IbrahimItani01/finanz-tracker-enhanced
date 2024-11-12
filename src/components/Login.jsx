@@ -34,17 +34,14 @@ const Login = () => {
       )
       .then((response) => {
         console.log(response.data.message);
-        if (response.data.status == "success") {
+        if (response.data.status === "success") {
           localStorage.setItem("currentUser", response.data.userId);
-          window.location.href = "http://127.0.0.1:5500/pages/dashboard.html";
         } else {
           alert("Failed to login.. Check password");
         }
       })
       .catch((err) => console.log(err));
-  }
-});
-
+  };
   return (
     <section class="login-section">
     <div class="login-container">

@@ -121,7 +121,7 @@ em{
     right: 0;
     background-color: #ffd900af;
     align-items: center;
-    
+    z-index: 1000;
     padding: 1em;
     box-shadow: 0 0 5px;
    

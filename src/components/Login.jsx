@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/login.css"
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -23,8 +24,10 @@ const Login = () => {
               <label for="budget">Initial Budget (in $):</label>
               <input type="number" name="budget" id="budget" />
             </div>
-          <button id="submit-button">             
+          <button id="submit-button">     
+            <Link to="/home">
                 To Dashboard
+            </Link>        
             </button>
         </div>
 

@@ -1,0 +1,101 @@
+.entry-section {
+    box-shadow: 0 0 8px 0;
+    padding: 2em 0;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 1em;
+    border-radius: 10px;
+}
+.entry-section > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5em;
+    position: relative;
+    margin: auto 0;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 0;
+}
+.entry-section > form > label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.entry-section > form > label > input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+}
+.entry-section > form > button {
+    width: 100%;
+    padding: 1em 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 1px;
+    background-color: gold;
+    font-weight: bold;
+    transition: all 0.4s ease;
+}
+.entry-section > form > button:hover {
+    box-shadow: 0 0 10px 1px;
+}
+.entry-display {
+    background-color: #ffd900af;
+    height: 100%;
+    width: 50%;
+    border-radius: 10px;
+    overflow-y: scroll;
+    min-width: 580px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.entry-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.actions-container {
+    display: flex;
+    gap: 1em;
+}
+.actions {
+    width: 40px;
+    cursor: pointer;
+}
+.edit-hint {
+    position: absolute;
+    top: -60px;
+    right: 7px;
+    left: 7px;
+    background-color: #ffd900af;
+    padding: 1em;
+    border-radius: 10px;
+}
+.edit-hint > em {
+    text-align: center;
+    display: block;
+}
+.sort-container {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.sort-container > select {
+    padding: 5px;
+    border-radius: 5px;
+}
+.sort-container > button {
+    background-color: white;
+    padding: 2px;
+    box-shadow: 0 0 5px 1px;
+}
+.entry-section > div {
+    display: flex;
+    flex-direction: column;
+}

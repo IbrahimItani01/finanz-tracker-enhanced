@@ -105,6 +105,9 @@ em{
     justify-content: space-between;
     padding: 1em;
 }
+.top-section>h1{
+    display: none;
+}
 .mobile-bar{
     position: relative;
     display: none;
@@ -186,6 +189,21 @@ em{
         display: none;
     }
     .mobile-bar{
+        display: block;
+    }
+    .virtual-body{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .top-section{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+
+    }
+    .top-section>h1{
         display: block;
     }
 }

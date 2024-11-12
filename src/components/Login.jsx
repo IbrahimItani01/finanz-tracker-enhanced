@@ -89,11 +89,15 @@ const Login = () => {
               )
               }
           </div>
-          <button id="submit-button" onClick={handleSubmit}>
-            {
-              disabled? <Link to="/">-</Link>:<Link to="/home">To Dashboard</Link>
-            }
-           
+
+          {error && <p className="error-message">{error}</p>}
+
+          <button
+            id="submit-button"
+            onClick={handleSubmit}
+            disabled={disabled}
+          >
+            Submit
           </button>
         </div>
       </div>

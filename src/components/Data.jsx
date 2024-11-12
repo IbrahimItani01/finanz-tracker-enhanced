@@ -18,7 +18,7 @@ const Data = ({ dataType }) => {
 
   useEffect(() => {
     sortData();
-  }, [sortCriteria, entryData]);
+  }, [sortCriteria]); // Only re-sort when sortCriteria changes
 
   const fetchUserName = () => {
     axios
@@ -41,7 +41,10 @@ const Data = ({ dataType }) => {
         { userId: localStorage.getItem("currentUser") },
         { headers: { "Content-Type": "application/json" } }
       )
-      .then((response) => setEntryData(response.data.array))
+      .then((response) => {
+        setEntryData(response.data.array);
+        sortData(response.data.array); // Sort immediately after fetching
+      })
       .catch((error) => console.error("Error fetching data:", error));
   };
 
@@ -133,8 +136,8 @@ const Data = ({ dataType }) => {
     setEntryNote("");
   };
 
-  const sortData = () => {
-    const sortedData = [...entryData].sort((a, b) => {
+  const sortData = (data = entryData) => {
+    const sortedData = [...data].sort((a, b) => {
       if (sortCriteria === "amount") return parseFloat(a.amount) - parseFloat(b.amount);
       if (sortCriteria === "note") return a.note.localeCompare(b.note);
       if (sortCriteria === "date") return new Date(b.date) - new Date(a.date);
@@ -162,15 +165,15 @@ const Data = ({ dataType }) => {
         <button type="submit">{editMode ? "Update" : "Add"} Entry</button>
       </form>
       <div id="entry-div" className="entry-display">
-      <select
-        id="sortCriteria"
-        value={sortCriteria}
-        onChange={(e) => setSortCriteria(e.target.value)}
-      >
-        <option value="amount">Amount</option>
-        <option value="note">Note</option>
-        <option value="date">Date</option>
-      </select>
+        <select
+          id="sortCriteria"
+          value={sortCriteria}
+          onChange={(e) => setSortCriteria(e.target.value)}
+        >
+          <option value="amount">Amount</option>
+          <option value="note">Note</option>
+          <option value="date">Date</option>
+        </select>
         {entryData.map((entry) => (
           <div className="entry-card" key={entry.id}>
             <div className="information">

@@ -7,8 +7,9 @@
     justify-content: space-around;
     gap: 1em;
     border-radius: 10px;
+    width: 100%;
 }
-.entry-section > form {
+.entry-section form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,17 +20,18 @@
     border-radius: 10px;
     box-shadow: 0 0 8px 0;
 }
-.entry-section > form > label {
+.entry-section form label {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-.entry-section > form > label > input {
+input {
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid;
+    border: 2px solid black;
+   
 }
-.entry-section > form > button {
+.entry-section  form button {
     width: 100%;
     padding: 1em 2em;
     border-radius: 10px;
@@ -38,7 +40,7 @@
     font-weight: bold;
     transition: all 0.4s ease;
 }
-.entry-section > form > button:hover {
+.entry-section form button:hover {
     box-shadow: 0 0 10px 1px;
 }
 .entry-display {

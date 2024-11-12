@@ -1,23 +1,36 @@
 import React, { useState } from "react";
 import "../styles/login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-  const [userName, setuserName] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [budget, setBudget] = useState(0);
-  const [disabled,setDisabled]=useState(true);
+  const [budget, setBudget] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
   const handleUsernameChange = (e) => {
-    setuserName(e.target.value);
+    setUserName(e.target.value);
   };
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
   const handleBudgetChange = (e) => {
-    setBudget(e.target.value);
+    const value = e.target.value;
+    setBudget(value === "" ? "" : Number(value)); // Store as a number or empty string
   };
-  const handleSubmit =() => {
+
+  const handleSubmit = () => {
+    if (userName === "" || password === "" || budget <= 0 || isNaN(budget)) {
+      setError("Please enter a valid username, password, and budget.");
+      return;
+    }
+
     axios
       .post(
         "http://localhost/finanz-tracker-enhanced/apis/createUser.php",
@@ -37,18 +50,20 @@ const Login = () => {
         if (response.data.status === "success") {
           localStorage.setItem("currentUser", response.data.userId);
           setDisabled(false);
+          navigate("/home");
         } else {
-          alert("Failed to login.. Check password");
+          setError("Failed to login. Check username and password.");
         }
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <section className="login-section">
       <div className="login-container">
         <div className="login-logo">
           <div>
-            <img src="/public/assets/logo.png" alt="logo" />
+            <img src="/assets/logo.png" alt="logo" />
           </div>
           <h1>Welcome to Finanz</h1>
         </div>
@@ -59,6 +74,7 @@ const Login = () => {
               type="text"
               name="username"
               id="username"
+              value={userName}
               onChange={handleUsernameChange}
             />
 
@@ -67,6 +83,7 @@ const Login = () => {
               type="password"
               name="password"
               id="password"
+              value={password}
               onChange={handlePasswordChange}
             />
 
@@ -75,19 +92,9 @@ const Login = () => {
               type="number"
               name="budget"
               id="budget"
+              value={budget}
               onChange={handleBudgetChange}
             />
-            {
-              userName === "" && isNaN(budget) && (
-                <p>Note! You must enter a username and budget</p>
-              )}
-              {userName === "" && !isNaN(budget) && (
-                <p>Note! You must enter a username</p>
-              )}
-              {isNaN(budget) && userName !== " " && (
-                <p>Note! You must enter a budget</p>
-              )
-              }
           </div>
 
           {error && <p className="error-message">{error}</p>}
@@ -99,6 +106,7 @@ const Login = () => {
           >
             Submit
           </button>
+          {!disabled && <Link to="/home">To Dashboard</Link>}
         </div>
       </div>
     </section>

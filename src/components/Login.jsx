@@ -22,9 +22,9 @@ const Login = () => {
       .post(
         "http://localhost/finanz-tracker-enhanced/apis/createUser.php",
         {
-          name: userNameInput.value,
-          budget: budgetNumber,
-          password: passwordValue.value,
+          name: userName,
+          budget: budget,
+          password: password,
         },
         {
           headers: {

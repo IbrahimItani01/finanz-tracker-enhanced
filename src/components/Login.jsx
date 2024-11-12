@@ -1,12 +1,14 @@
 import React from 'react'
 import "../styles/login.css"
+
 const Login = () => {
   return (
     <section class="login-section">
     <div class="login-container">
         <div class="login-logo">
             <div>
-                <img src="/assets/logo.png" alt="logo"/>
+                <img src="/public/assets/logo.png" alt="logo"/>
+               
             </div>
             <h1>Welcome to Finanz</h1>
         </div>

@@ -30,22 +30,24 @@ const Dashboard = () => {
 
   resetButton?.addEventListener("click",()=>{
     axios
-  .post(
-    "http://localhost/finanz-tracker-enhanced/apis/deleteUser.php",
-    {
-      id: localStorage.getItem("currentUser"),
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  )
-  .then((response) => {
-    window.location.href = "http://127.0.0.1:5500";
-
-  })
-  .catch((err) => console.log(err));
+      .post(
+        "http://localhost/finanz-tracker-enhanced/apis/totalValues.php",
+        {
+          id: localStorage.getItem("currentUser"),
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setTotalExpenses(response.data.total_expenses);
+        setTotalIncomes(response.data.total_income);
+        setRemainingBudget(response.data.budget - response.data.total_expenses);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   })
   return (

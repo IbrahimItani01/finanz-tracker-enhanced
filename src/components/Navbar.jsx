@@ -1,5 +1,6 @@
 import React from 'react'
 import "../styles/base.css"
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -12,9 +13,9 @@ const Navbar = () => {
                 <h3>Out of Budget!!</h3>
             </div>
             <nav>
-                <a href="/pages/dashboard.html" className="current-page">Overview</a>
-                <a href="/pages/income.html">Income</a>
-                <a href="/pages/expense.html">Expenses</a>
+                <Link to="/home" className="current-page">Overview</Link>
+                <Link to="/income">Income</Link>
+                <Link to="/expense">Expenses</Link>
             </nav>
             <button className="reset" id="reset-button">Reset</button>
             <em> &copy Finanz | Ibrahim Itani</em>
@@ -30,9 +31,9 @@ const Navbar = () => {
                  <h3>Out of Budget!!</h3>
              </div>
              <nav>
-                 <a href="/pages/dashboard.html" className="current-page">Overview</a>
-                 <a href="/pages/income.html">Income</a>
-                 <a href="/pages/expense.html">Expenses</a>
+                <Link to="/home" className="current-page">Overview</Link>
+                <Link to="/income">Income</Link>
+                <Link to="/expense">Expenses</Link>
              </nav>
              <button className="reset" id="reset-button">Reset</button>
          </div>

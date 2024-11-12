@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Finanz Expense Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is an Expense Tracker application built using vanilla HTML, CSS, and JavaScript on the frontend, with a MySQL database for data storage. The backend is powered by PHP, which handles the API for CRUD operations on expenses and incomes. This app allows users to track their income and expenses efficiently.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Management**: Allows creating users with a specified budget.
+- **Expense Tracking**: Users can add, update, delete, and view expenses with details like amount, note, and date.
+- **Income Tracking**: Users can add, update, delete, and view incomes with details like amount, note, and date.
+- **Sorting Functionality**: Sort expenses and income records by amount, note, and date.
+- **CRUD Operations**: All operations (Create, Read, Update, Delete) for income and expenses are managed through PHP APIs.
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: PHP
+- **Database**: MySQL
+  - Tables:
+    - `users`: Contains user information, such as ID, name, and budget.
+    - `expenses`: Records each user's expenses, including amount, note, and date.
+    - `incomes`: Records each user's income, including amount, note, and date.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Database ERD
 
-### `npm test`
+The following ERD (Entity-Relationship Diagram) shows the relationships between the tables used in the application:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Database ERD](./FinanzERD.png)
 
-### `npm run build`
+- **users** table has a one-to-many relationship with **expenses** and **incomes** tables via `user_id`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Endpoints
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The backend exposes several endpoints to interact with the database.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Create Income**: `POST /apis/createIncome.php`
+- **Retrieve Incomes**: `POST /apis/displayIncomes.php`
+- **Update Income**: `POST /apis/updateIncome.php`
+- **Delete Income**: `POST /apis/deleteIncome.php`
 
-### `npm run eject`
+- **Create Expense**: `POST /apis/createExpense.php`
+- **Retrieve Expenses**: `POST /apis/displayExpenses.php`
+- **Update Expense**: `POST /apis/updateExpense.php`
+- **Delete Expense**: `POST /apis/deleteExpense.php`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Each endpoint uses data in JSON format and expects parameters specific to each operation, such as user ID, amount, note, and date.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clone the repository and set up a local server (e.g., using XAMPP).
+2. Import the database structure from the provided SQL file.
+3. Configure the API endpoints by adjusting database connection settings in PHP files if needed.
+4. Launch `index.html` in a browser to start using the app.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Technology Stack
 
-## Learn More
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: PHP
+- **Database**: MySQL
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Installation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository.
+   ```bash
+   git clone <repository-url>

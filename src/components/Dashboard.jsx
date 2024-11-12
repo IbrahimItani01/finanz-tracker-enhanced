@@ -1,6 +1,7 @@
-import React from 'react'
-import "../styles/dashboard.css"
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "../styles/dashboard.css";
+import axios from "axios";
+
 const Dashboard = () => {
     const remainingBudget = document.getElementById("remaining-budget-display");
 const totalExpensesDisplay = document.getElementById("expenses-total-display");

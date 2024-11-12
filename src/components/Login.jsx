@@ -4,40 +4,20 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-  const submitButton = document.getElementById("submit-button");
-const userNameContainer = document.getElementById("username-container");
-const burgerMenu = document.getElementById("mobile-menu");
-const burgerContent = document.getElementById("mobile-content");
-const passwordValue = document.getElementById("password");
-burgerMenu?.addEventListener("click", () => {
-  burgerContent.classList.toggle("hidden");
-});
-submitButton?.addEventListener("click", () => {
-  const userNameInput = document.getElementById("username");
-  const budgetInput = document.getElementById("budget");
-  let budgetNumber = parseInt(budgetInput.value);
-  if (userNameInput.value === "" && isNaN(budgetNumber)) {
-    userNameContainer.innerHTML += `
-        <p>Note! You must enter a username and budget</p>
-        `;
-    setTimeout(() => {
-      window.location.reload();
-    }, 700);
-  } else if (userNameInput.value === "" && !isNaN(budgetNumber)) {
-    userNameContainer.innerHTML += `
-        <p>Note! You must enter a username</p>
-        `;
-    setTimeout(() => {
-      window.location.reload();
-    }, 700);
-  } else if (isNaN(budgetNumber) && userNameInput.value !== " ") {
-    userNameContainer.innerHTML += `
-        <p>Note! You must enter a budget</p>
-        `;
-    setTimeout(() => {
-      window.location.reload();
-    }, 700);
-  } else {
+  const [userName, setuserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [budget, setBudget] = useState(0);
+
+  const handleUsernameChange = (e) => {
+    setuserName(e.target.value);
+  };
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleBudgetChange = (e) => {
+    setBudget(e.target.value);
+  };
+  const handleSubmit =() => {
     axios
       .post(
         "http://localhost/finanz-tracker-enhanced/apis/createUser.php",

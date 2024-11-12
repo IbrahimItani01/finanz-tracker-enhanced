@@ -12,7 +12,7 @@ This project is an Expense Tracker application built using vanilla HTML, CSS, an
 
 ## Project Structure
 
-- **Frontend**: HTML, CSS, JavaScript
+- **Frontend**: React
 - **Backend**: PHP
 - **Database**: MySQL
   - Tables:

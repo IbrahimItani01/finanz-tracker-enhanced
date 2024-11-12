@@ -43,36 +43,58 @@ const Login = () => {
       .catch((err) => console.log(err));
   };
   return (
-    <section class="login-section">
-    <div class="login-container">
-        <div class="login-logo">
-            <div>
-                <img src="/public/assets/logo.png" alt="logo"/>
-               
-            </div>
-            <h1>Welcome to Finanz</h1>
+    <section className="login-section">
+      <div className="login-container">
+        <div className="login-logo">
+          <div>
+            <img src="/public/assets/logo.png" alt="logo" />
+          </div>
+          <h1>Welcome to Finanz</h1>
         </div>
-        <div class="login-form">
-            <div id="username-container">
-                <label for="username">Username:</label>
-              <input type="text" name="username" id="username" />
+        <div className="login-form">
+          <div id="username-container">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              name="username"
+              id="username"
+              onChange={handleUsernameChange}
+            />
 
-              <label for="password">Password:</label>
-              <input type="password" name="password" id="password" />
-              
-              <label for="budget">Initial Budget (in $):</label>
-              <input type="number" name="budget" id="budget" />
-            </div>
-          <button id="submit-button">     
-            <Link to="/home">
-                To Dashboard
-            </Link>        
-            </button>
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              onChange={handlePasswordChange}
+            />
+
+            <label htmlFor="budget">Initial Budget (in $):</label>
+            <input
+              type="number"
+              name="budget"
+              id="budget"
+              onChange={handleBudgetChange}
+            />
+            {
+              userName === "" && isNaN(budget) && (
+                <p>Note! You must enter a username and budget</p>
+              )}
+              {userName === "" && !isNaN(budget) && (
+                <p>Note! You must enter a username</p>
+              )}
+              {isNaN(budget) && userName !== " " && (
+                <p>Note! You must enter a budget</p>
+              )
+              }
+          </div>
+          <button id="submit-button" onClick={handleSubmit}>
+            <Link to="/home">To Dashboard</Link>
+          </button>
         </div>
+      </div>
+    </section>
+  );
+};
 
-    </div>
-</section>
-  )
-}
-
-export default Login
+export default Login;

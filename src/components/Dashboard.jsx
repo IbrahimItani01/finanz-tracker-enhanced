@@ -28,7 +28,6 @@ const Dashboard = () => {
       })
       .catch((err) => console.log(err));
 
-  resetButton?.addEventListener("click",()=>{
     axios
       .post(
         "http://localhost/finanz-tracker-enhanced/apis/totalValues.php",
@@ -49,7 +48,6 @@ const Dashboard = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  })
   return (
     <div className="data-section">
       <div className="features-card">
@@ -94,4 +92,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard
+export default Dashboard;

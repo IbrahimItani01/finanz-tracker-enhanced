@@ -7,7 +7,7 @@ const Login = () => {
   const [userName, setuserName] = useState("");
   const [password, setPassword] = useState("");
   const [budget, setBudget] = useState(0);
-
+  const [disabled,setDisabled]=useState(true);
   const handleUsernameChange = (e) => {
     setuserName(e.target.value);
   };
@@ -36,6 +36,7 @@ const Login = () => {
         console.log(response.data.message);
         if (response.data.status === "success") {
           localStorage.setItem("currentUser", response.data.userId);
+          setDisabled(false);
         } else {
           alert("Failed to login.. Check password");
         }
@@ -89,7 +90,10 @@ const Login = () => {
               }
           </div>
           <button id="submit-button" onClick={handleSubmit}>
-            <Link to="/home">To Dashboard</Link>
+            {
+              disabled? <Link to="/">-</Link>:<Link to="/home">To Dashboard</Link>
+            }
+           
           </button>
         </div>
       </div>
